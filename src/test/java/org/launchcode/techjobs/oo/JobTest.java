@@ -38,4 +38,27 @@ public class JobTest {
 
         assertNotEquals(job1, job2);
     }
+
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+        Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        assertTrue(job.toString().startsWith("\n"));
+        assertTrue(job.toString().endsWith("\n"));
+    }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData() {
+        Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        String expectedResult = "\n" +
+                                "ID: " + job.getId() + "\n" +
+                                "Name: " + job.getName() + "\n" +
+                                "Employer: " + job.getEmployer() + "\n" +
+                                "Location: " + job.getLocation() + "\n" +
+                                "Position Type: " + job.getPositionType() + "\n" +
+                                "Core Competency: " + job.getCoreCompetency() + "\n";
+
+        assertEquals(expectedResult, job.toString());
+    }
 }
