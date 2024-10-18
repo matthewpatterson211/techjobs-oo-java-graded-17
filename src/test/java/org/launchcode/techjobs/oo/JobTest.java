@@ -67,7 +67,7 @@ public class JobTest {
         Job job = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
 
         String expectedResult = "\n" +
-                "ID: Data not available\n" +
+                "ID: " + job.getId() + "\n" +
                 "Name: Data not available\n" +
                 "Employer: Data not available\n" +
                 "Location: Data not available\n" +

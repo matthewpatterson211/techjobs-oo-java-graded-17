@@ -2,7 +2,11 @@ package org.launchcode.techjobs.oo;
 
 import java.util.Objects;
 
+import static java.lang.System.lineSeparator;
+
 public class Job {
+
+    private final String DNE = "Data not available";
 
     private int id;
     private static int nextId = 1;
@@ -99,12 +103,35 @@ public class Job {
 
     @Override
     public String toString() {
-        return "\n" +
-                "ID: " + id + "\n" +
-                "Name: " + name + "\n" +
-                "Employer: " + employer + "\n" +
-                "Location: " + location + "\n" +
-                "Position Type: " + positionType + "\n" +
-                "Core Competency: " + coreCompetency + "\n";
+        String printName = getName();
+        String printEmployer = getEmployer().getValue();
+        String printLocation = getLocation().getValue();
+        String printPositionType = getPositionType().getValue();
+        String printCoreCompetency = getCoreCompetency().getValue();
+
+        if (printName.isEmpty()) {
+            printName = DNE;
+        }
+        if (printEmployer.isEmpty()) {
+            printEmployer = DNE;
+        }
+        if (printLocation.isEmpty()) {
+            printLocation = DNE;
+        }
+        if (printPositionType.isEmpty()) {
+            printPositionType = DNE;
+        }
+        if (printCoreCompetency.isEmpty()) {
+            printCoreCompetency = DNE;
+        }
+
+        return lineSeparator() +
+                "ID: " + id + lineSeparator() +
+                "Name: " + printName + lineSeparator() +
+                "Employer: " + printEmployer + lineSeparator() +
+                "Location: " + printLocation + lineSeparator() +
+                "Position Type: " + printPositionType + lineSeparator() +
+                "Core Competency: " + printCoreCompetency + lineSeparator();
+
     }
 }
